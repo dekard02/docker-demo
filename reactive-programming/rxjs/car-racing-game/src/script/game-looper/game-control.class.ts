@@ -1,13 +1,4 @@
-import {
-  BehaviorSubject,
-  Observable,
-  fromEvent,
-  map,
-  merge,
-  scan,
-  share,
-  tap,
-} from 'rxjs';
+import { Observable, fromEvent, map, merge, scan, share } from 'rxjs';
 import { EventType } from './type/game-control.type';
 
 export class GameControl {
@@ -32,7 +23,6 @@ export class GameControl {
 
     this.keyCodeListener$ = merge(this.keyDown$, this.keyUp$).pipe(
       scan((acc, keyEvent) => {
-        console.log(keyEvent);
         if (keyEvent.type === 'keydown') {
           acc.add(keyEvent.event.code);
         } else {
